@@ -19,9 +19,9 @@ defineProps({
 });
 
 onMounted(() => {
-    // let externalScript = document.createElement('script')
-    // externalScript.setAttribute('src', '/assets/js/app.js')
-    // document.head.appendChild(externalScript)
+    let externalScript = document.createElement("script");
+    externalScript.setAttribute("src", "/assets/js/app-vue.js");
+    document.head.appendChild(externalScript);
 });
 </script>
 
