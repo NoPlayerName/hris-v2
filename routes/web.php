@@ -16,6 +16,8 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
+    return redirect()->route('ski');
+
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -26,24 +28,24 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->name('dashboard');
 
 Route::get('/ski', function () {
     return view('pms.ski.index');
-})->middleware(['auth', 'verified'])->name('ski');
+})->name('ski');
 
 Route::get('/pa', function () {
     return view('pms.pa.index');
-})->middleware(['auth', 'verified'])->name('pa');
+})->name('pa');
 
 Route::prefix('inertia')->name('inertia.')->group(function ($route) {
     $route->get('/ski', function () {
         return Inertia::render('SKI');
-    })->middleware(['auth', 'verified'])->name('ski');
+    })->name('ski');
 
     $route->get('/pa', function () {
         return Inertia::render('PA');
-    })->middleware(['auth', 'verified'])->name('pa');
+    })->name('pa');
 });
 
 require __DIR__.'/auth.php';
