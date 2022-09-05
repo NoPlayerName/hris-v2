@@ -37,7 +37,7 @@ jobs:
         env:
           MINIO_ROOT_USER: sail
           MINIO_ROOT_PASSWORD: password
-        options: --health-cmd "curl http://localhost:9000/minio/health/live" --health-interval 10s --health-timeout 5s --health-retries 3
+        options: --health-cmd "curl http://minio:9000/minio/health/live" --health-interval 10s --health-timeout 5s --health-retries 3
 
     steps:
     - name: Setup minio
