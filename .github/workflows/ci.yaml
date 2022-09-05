@@ -17,6 +17,7 @@ jobs:
         image: redis:alpine
         ports:
           - 6379:6379
+        options: --health-cmd "redis-cli ping" --health-interval 10s --health-timeout 5s --health-retries 3
         
       pgsql:
         image: postgres:14
@@ -26,7 +27,7 @@ jobs:
           POSTGRES_DB: testing
         ports:
           - 5432:5432
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 3
 
       minio:
         image: 'minio/minio:latest'
@@ -36,19 +37,15 @@ jobs:
         env:
           MINIO_ROOT_USER: sail
           MINIO_ROOT_PASSWORD: password
+        options: --health-cmd "curl http://localhost:9000/minio/health/live" --health-interval 10s --health-timeout 5s --health-retries 3
 
     steps:
     - name: Setup minio
       run: |
-        curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-        unzip awscliv2.zip
-        ./aws/install
-
-        export AWS_ACCESS_KEY_ID=sail
-        export AWS_SECRET_ACCESS_KEY=password
-        export AWS_EC2_METADATA_DISABLED=true
-
-        aws --endpoint-url http://minio:9000/ s3 mb s3://hris
+        wget https://dl.min.io/client/mc/release/linux-amd64/mc
+        chmod +x ./mc
+        ./mc alias set minio http://127.0.0.1:9000 sail password
+        ./mc mb --ignore-existing minio/hris
 
     - uses: actions/checkout@v1
       with:
