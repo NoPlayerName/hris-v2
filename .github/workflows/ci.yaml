@@ -1,0 +1,91 @@
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main, dev ]
+
+name: CI
+
+jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+    container:
+      image: kirschbaumdevelopment/laravel-test-runner:8.1
+
+    services:
+      redis:
+        image: redis:alpine
+        ports:
+          - 6379:6379
+        
+      postgres:
+        image: postgres:14
+        env:
+          POSTGRES_USER: sail
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: testing
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+      minio:
+        image: 'minio/minio:latest'
+        ports:
+          - 9000:9000
+          - 8900:8900
+        env:
+          MINIO_ROOT_USER: sail
+          MINIO_ROOT_PASSWORD: password
+
+    steps:
+    - name: Setup minio
+      run: |
+        export AWS_ACCESS_KEY_ID=sail
+        export AWS_SECRET_ACCESS_KEY=password
+        export AWS_EC2_METADATA_DISABLED=true
+
+        aws --endpoint-url http://127.0.0.1:9000/ s3 mb s3://hris
+
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+
+    - name: Get Composer Cache Directory
+      id: composer-cache
+      run: |
+        echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+    - uses: actions/cache@v1
+      with:
+        path: ${{ steps.composer-cache.outputs.dir }}
+        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-composer-
+
+    - name: Get yarn cache
+      id: yarn-cache
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+
+    - uses: actions/cache@v1
+      with:
+        path: ${{ steps.yarn-cache.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+
+    - name: Install composer dependencies
+      run: |
+        composer install --no-scripts
+
+    - name: Prepare Laravel Application
+      run: |
+        cp .ci.env .env
+        php artisan key:generate
+
+    - name: Install front-end dependencies
+      run: |
+        npm install
+        npm run dev
+
+    - name: Run Testsuite
+      run: vendor/bin/phpunit tests/
