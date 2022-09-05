@@ -18,7 +18,7 @@ jobs:
         ports:
           - 6379:6379
         
-      postgres:
+      pgsql:
         image: postgres:14
         env:
           POSTGRES_USER: sail
@@ -48,7 +48,7 @@ jobs:
         export AWS_SECRET_ACCESS_KEY=password
         export AWS_EC2_METADATA_DISABLED=true
 
-        aws --endpoint-url http://127.0.0.1:9000/ s3 mb s3://hris
+        aws --endpoint-url http://minio:9000/ s3 mb s3://hris
 
     - uses: actions/checkout@v1
       with:
