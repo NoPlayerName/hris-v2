@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -38,14 +39,7 @@ Route::get('/pa', function () {
     return view('pms.pa.index');
 })->name('pa');
 
-Route::prefix('inertia')->name('inertia.')->group(function ($route) {
-    $route->get('/ski', function () {
-        return Inertia::render('SKI');
-    })->name('ski');
-
-    $route->get('/pa', function () {
-        return Inertia::render('PA');
-    })->name('pa');
-});
-
-require __DIR__.'/auth.php';
+Route::get('/login', [LoginController::class, 'loginSSO'])->name('login');
+Route::get('/callback', [LoginController::class, 'callback'])->name('login.sso.callback');
+Route::get('/logout', [LoginController::class, 'logout']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

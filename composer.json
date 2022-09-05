@@ -7,10 +7,12 @@
     "require": {
         "php": "^8.0.2",
         "guzzlehttp/guzzle": "^7.2",
+        "highsolutions/eloquent-sequence": "^3.9",
         "inertiajs/inertia-laravel": "^0.6.3",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^2.8",
         "laravel/tinker": "^2.7",
+        "qwildz/passport-sso-client": "^0.3.0",
         "spatie/laravel-data": "^2.0",
         "tightenco/ziggy": "^1.0"
     },
