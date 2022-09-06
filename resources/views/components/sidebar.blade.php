@@ -4,19 +4,19 @@
         <!-- Dark Logo-->
         <a href="index.html" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="assets/images/logo-tm.png" alt="" height="22">
+                <img src="{{ url('assets/images/logo-tm.png') }}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="assets/images/logo-trans7.png" alt="" height="50">
+                <img src="{{ url('assets/images/logo-trans7.png') }}" alt="" height="50">
             </span>
         </a>
         <!-- Light Logo-->
         <a href="index.html" class="logo logo-light">
             <span class="logo-sm">
-                <img src="assets/images/logo-tm.png" alt="" height="22">
+                <img src="{{ url('assets/images/logo-tm.png') }}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="assets/images/logo-trans7.png" alt="" height="50">
+                <img src="{{ url('assets/images/logo-trans7.png') }}" alt="" height="50">
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
@@ -105,7 +105,7 @@
                     <div class="collapse show menu-dropdown" id="ski-pa">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('ski') }}" class="nav-link" data-key="t-ski">Sasaran
+                                <a href="{{ route('pms.ski.index') }}" class="nav-link" data-key="t-ski">Sasaran
                                     Kerja Individu</a>
                             </li>
                             <li class="nav-item">
@@ -113,7 +113,7 @@
                                     Tracking</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('pa') }}" class="nav-link" data-key="t-pa">Performance
+                                <a href="{{ route('pms.pa.index') }}" class="nav-link" data-key="t-pa">Performance
                                     Appraisal</a>
                             </li>
                             <li class="nav-item">

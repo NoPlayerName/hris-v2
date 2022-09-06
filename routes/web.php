@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\PMS\PAController;
+use App\Http\Controllers\PMS\SKIController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,30 +17,16 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('ski');
-
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
-
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
-
-Route::get('/ski', function () {
-    return view('pms.ski.index');
-})->name('ski');
-
-Route::get('/pa', function () {
-    return view('pms.pa.index');
-})->name('pa');
-
 Route::get('/login', [LoginController::class, 'loginSSO'])->name('login');
 Route::get('/callback', [LoginController::class, 'callback'])->name('login.sso.callback');
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/', function () {
+    return redirect()->route('pms.ski.index');
+});
+
+Route::middleware('auth')->prefix('pms')->name('pms.')->group(function () {
+    Route::get('/ski', [SKIController::class, 'index'])->name('ski.index');
+    Route::get('/pa', [PAController::class, 'index'])->name('pa.index');
+});
