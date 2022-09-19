@@ -28,51 +28,63 @@ class DatabaseSeeder extends Seeder
         // ]);
         DB::table('skis')->insert([
             'category' => 'data',
-            'created_at' => date('Ymd'),
-            'updated_at' => date('Ymd'),
-            'deleted_at' => date('Ymd')
+            // 'created_at' => date('Ymd'),
+            // 'updated_at' => date('Ymd'),
+            // 'deleted_at' => date('Ymd')
         ]);
         DB::table('skis')->insert([
             'category' => 'data2',
-            'created_at' => date('Ymd'),
-            'updated_at' => date('Ymd'),
-            'deleted_at' => date('Ymd')
+            // 'created_at' => date('Ymd'),
+            // 'updated_at' => date('Ymd'),
+            // 'deleted_at' => date('Ymd')
         ]);
 
         DB::table('kelompok_sks')->insert([
             'kelompok' => 'Finansial',
-            'created_at' => date('Ymd'),
-            'updated_at' => date('Ymd'),
-            'deleted_at' => date('Ymd')
+            // 'created_at' => date('Ymd'),
+            // 'updated_at' => date('Ymd'),
+            // 'deleted_at' => date('Ymd')
 
         ]);
 
         DB::table('kelompok_sks')->insert([
             'kelompok' => 'Pelanggan',
-            'created_at' => date('Ymd'),
-            'updated_at' => date('Ymd'),
-            'deleted_at' => date('Ymd')
+            // 'created_at' => date('Ymd'),
+            // 'updated_at' => date('Ymd'),
+            // 'deleted_at' => date('Ymd')
         ]);
 
         DB::table('kelompok_sks')->insert([
             'kelompok' => 'Proses Internal',
-            'created_at' => date('Ymd'),
-            'updated_at' => date('Ymd'),
-            'deleted_at' => date('Ymd')
+            // 'created_at' => date('Ymd'),
+            // 'updated_at' => date('Ymd'),
+            // 'deleted_at' => date('Ymd')
         ]);
 
         DB::table('kelompok_sks')->insert([
             'kelompok' => 'Pertumbuhan & Pembelajaran',
-            'created_at' => date('Ymd'),
-            'updated_at' => date('Ymd'),
-            'deleted_at' => date('Ymd')
+            // 'created_at' => date('Ymd'),
+            // 'updated_at' => date('Ymd'),
+            // 'deleted_at' => date('Ymd')
         ]);
 
         DB::table('kelompok_sks')->insert([
             'kelompok' => 'Lain - lain',
-            'created_at' => date('Ymd'),
-            'updated_at' => date('Ymd'),
-            'deleted_at' => date('Ymd')
+            // 'created_at' => date('Ymd'),
+            // 'updated_at' => date('Ymd'),
+            // 'deleted_at' => date('Ymd')
+        ]);
+        DB::table('ski_tugas')->insert([
+            'id_ref_ski' => '1',
+            'tugas' => 'membuat sistem'
+        ]);
+        DB::table('ski_tugas')->insert([
+            'id_ref_ski' => '2',
+            'tugas' => 'membuat sistem2'
+        ]);
+        DB::table('ski_tugas')->insert([
+            'id_ref_ski' => '3',
+            'tugas' => 'membuat sistem3'
         ]);
     }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SKITugas;
-use App\Http\Requests\StoreSKITugasRequest;
-use App\Http\Requests\UpdateSKITugasRequest;
+use App\Models\SkiTugas;
+use App\Http\Requests\StoreSkiTugasRequest;
+use App\Http\Requests\UpdateSkiTugasRequest;
 
 class SKITugasController extends Controller
 {
@@ -34,18 +34,27 @@ class SKITugasController extends Controller
      * @param  \App\Http\Requests\StoreSKITugasRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSKITugasRequest $request)
+    public function store(StoreSkiTugasRequest $request)
     {
-        //
+        $tugas = $request['tugas'];
+        $id_ref_ski = $request['id_ref_ski'];
+
+        SkiTugas::create([
+            'id_ref_ski' => $id_ref_ski,
+            'tugas' => $tugas,
+            'created_at' => date('Ymd')
+        ]);
+
+        return redirect(route('pms.ski.index'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\SKITugas  $sKITugas
+     * @param  \App\Models\SkiTugas  $sKITugas
      * @return \Illuminate\Http\Response
      */
-    public function show(SKITugas $sKITugas)
+    public function show(SkiTugas $SkiTugas)
     {
         //
     }
@@ -53,10 +62,10 @@ class SKITugasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\SKITugas  $sKITugas
+     * @param  \App\Models\SkiTugas  $sKITugas
      * @return \Illuminate\Http\Response
      */
-    public function edit(SKITugas $sKITugas)
+    public function edit(SkiTugas $SkiTugas)
     {
         //
     }
@@ -64,13 +73,15 @@ class SKITugasController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSKITugasRequest  $request
-     * @param  \App\Models\SKITugas  $sKITugas
+     * @param  \App\Http\Requests\UpdateSkiTugasRequest  $request
+     * @param  \App\Models\SkiTugas  $sKITugas
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSKITugasRequest $request, SKITugas $sKITugas)
+    public function update(UpdateSkiTugasRequest $request, SkiTugas $SKITugas)
     {
-        //
+        SKITugas::where('id_ref_ski_tugas', $SKITugas->id_ref_ski_tugas)
+        ->update(['tugas' => $request->tugas]);
+        return redirect(route('pms.ski.index'));
     }
 
     /**
@@ -79,8 +90,10 @@ class SKITugasController extends Controller
      * @param  \App\Models\SKITugas  $sKITugas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SKITugas $sKITugas)
+    public function destroy(SkiTugas $SKITugas)
     {
-        //
+        SkiTugas::destroy($SKITugas->id_ref_ski_tugas);
+
+        return redirect(route('pms.ski.index'));
     }
 }

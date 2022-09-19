@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SKISk;
-use App\Http\Requests\StoreSKISkRequest;
-use App\Http\Requests\UpdateSKISkRequest;
+use App\Models\SkiSk;
+use App\Http\Requests\StoreSkiSkRequest;
+use App\Http\Requests\UpdateSkiSkRequest;
 
-class SKISkController extends Controller
+class SkiSkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,21 +31,37 @@ class SKISkController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSKISkRequest  $request
+     * @param  \App\Http\Requests\StoreSkiSkRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSKISkRequest $request)
+    public function store(StoreSkiSkRequest $request)
     {
-        //
+        // $tugas = $request['tugas'];
+        // $id_ref_ski = $request['id_ref_ski'];
+
+        SkiSk::create([
+
+            'id_ref_ski' => $request['id_ref_ski'],
+            'id_kelompok_sk' => $request['id_kelompok_sk'],
+            'sasaran_kerja' => $request['sasaran_kerja'],
+            'bobot' => $request['bobot'],
+            'kriteria_pengukuran' => $request['kriteria_pengukuran'],
+            'target' => $request['target'],
+            'batas_waktu' => $request['batas_waktu'],
+            'rencana_tindakan' => $request['rencana_tindakan'],
+            'sequence' => $request['sequence'],
+        ]);
+
+        return redirect(route('pms.ski.index'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\SKISk  $sKISk
+     * @param  \App\Models\SkiSk  $skiSk
      * @return \Illuminate\Http\Response
      */
-    public function show(SKISk $sKISk)
+    public function show(SkiSk $skiSk)
     {
         //
     }
@@ -53,10 +69,10 @@ class SKISkController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\SKISk  $sKISk
+     * @param  \App\Models\SkiSk  $skiSk
      * @return \Illuminate\Http\Response
      */
-    public function edit(SKISk $sKISk)
+    public function edit(SkiSk $skiSk)
     {
         //
     }
@@ -64,23 +80,36 @@ class SKISkController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSKISkRequest  $request
-     * @param  \App\Models\SKISk  $sKISk
+     * @param  \App\Http\Requests\UpdateSkiSkRequest  $request
+     * @param  \App\Models\SkiSk  $skiSk
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSKISkRequest $request, SKISk $sKISk)
+    public function update(UpdateSkiSkRequest $request, SkiSk $skiSk)
     {
-        //
+        SkiSk::where('id_ref_ski', $skiSk->id_ref_ski)
+               ->update([
+            'id_ref_ski' => $request['id_ref_ski'],
+            'id_kelompok_sk' => $request['id_kelompok_sk'],
+            'sasaran_kerja' => $request['sasaran_kerja'],
+            'bobot' => $request['bobot'],
+            'kriteria_pengukuran' => $request['kriteria_pengukuran'],
+            'target' => $request['target'],
+            'batas_waktu' => $request['batas_waktu'],
+            'rencana_tindakan' => $request['rencana_tindakan'],
+            'sequence' => $request['sequence'],]);
+        return redirect(route('pms.ski.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\SKISk  $sKISk
+     * @param  \App\Models\SkiSk  $skiSk
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SKISk $sKISk)
+    public function destroy(SkiSk $skiSk)
     {
-        //
+        SkiSk::destroy($skiSk->id_ref_skis);
+
+        return redirect(route('pms.ski.index'));
     }
 }

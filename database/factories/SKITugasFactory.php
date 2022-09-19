@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\SKITugas>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\SkiTugas>
  */
-class SKITugasFactory extends Factory
+class SkiTugasFactory extends Factory
 {
     /**
      * Define the model's default state.

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\KelompokSK;
-use App\Http\Requests\StoreKelompokSKRequest;
-use App\Http\Requests\UpdateKelompokSKRequest;
+use App\Models\KelompokSk;
+use App\Http\Requests\StoreKelompokSkRequest;
+use App\Http\Requests\UpdateKelompokSkRequest;
 
-class KelompokSKController extends Controller
+class KelompokSkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class KelompokSKController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreKelompokSKRequest  $request
+     * @param  \App\Http\Requests\StoreKelompokSkRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreKelompokSKRequest $request)
+    public function store(StoreKelompokSkRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class KelompokSKController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\KelompokSK  $kelompokSK
+     * @param  \App\Models\KelompokSk  $kelompokSk
      * @return \Illuminate\Http\Response
      */
-    public function show(KelompokSK $kelompokSK)
+    public function show(KelompokSk $kelompokSk)
     {
         //
     }
@@ -53,10 +53,10 @@ class KelompokSKController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\KelompokSK  $kelompokSK
+     * @param  \App\Models\KelompokSk  $kelompokSk
      * @return \Illuminate\Http\Response
      */
-    public function edit(KelompokSK $kelompokSK)
+    public function edit(KelompokSk $kelompokSk)
     {
         //
     }
@@ -64,11 +64,11 @@ class KelompokSKController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateKelompokSKRequest  $request
-     * @param  \App\Models\KelompokSK  $kelompokSK
+     * @param  \App\Http\Requests\UpdateKelompokSkRequest  $request
+     * @param  \App\Models\KelompokSk  $kelompokSk
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateKelompokSKRequest $request, KelompokSK $kelompokSK)
+    public function update(UpdateKelompokSkRequest $request, KelompokSk $kelompokSk)
     {
         //
     }
@@ -76,10 +76,10 @@ class KelompokSKController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\KelompokSK  $kelompokSK
+     * @param  \App\Models\KelompokSk  $kelompokSk
      * @return \Illuminate\Http\Response
      */
-    public function destroy(KelompokSK $kelompokSK)
+    public function destroy(KelompokSk $kelompokSk)
     {
         //
     }

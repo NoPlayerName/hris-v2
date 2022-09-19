@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SKI;
-use App\Http\Requests\StoreSKIRequest;
-use App\Http\Requests\UpdateSKIRequest;
+use App\Models\Ski;
+use App\Http\Requests\StoreSkiRequest;
+use App\Http\Requests\UpdateSkiRequest;
 
-class SKIController extends Controller
+class SkiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class SKIController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSKIRequest  $request
+     * @param  \App\Http\Requests\StoreSkiRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSKIRequest $request)
+    public function store(StoreSkiRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class SKIController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\SKI  $sKI
+     * @param  \App\Models\Ski  $ski
      * @return \Illuminate\Http\Response
      */
-    public function show(SKI $sKI)
+    public function show(Ski $ski)
     {
         //
     }
@@ -53,10 +53,10 @@ class SKIController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\SKI  $sKI
+     * @param  \App\Models\Ski  $ski
      * @return \Illuminate\Http\Response
      */
-    public function edit(SKI $sKI)
+    public function edit(Ski $ski)
     {
         //
     }
@@ -64,11 +64,11 @@ class SKIController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSKIRequest  $request
-     * @param  \App\Models\SKI  $sKI
+     * @param  \App\Http\Requests\UpdateSkiRequest  $request
+     * @param  \App\Models\Ski  $ski
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSKIRequest $request, SKI $sKI)
+    public function update(UpdateSkiRequest $request, Ski $ski)
     {
         //
     }
@@ -76,10 +76,10 @@ class SKIController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\SKI  $sKI
+     * @param  \App\Models\Ski  $ski
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SKI $sKI)
+    public function destroy(Ski $ski)
     {
         //
     }
