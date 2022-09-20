@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Models\SKISk;
+use App\Models\SkiSk;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase as TestsTestCase;
@@ -19,7 +19,7 @@ class SKISkTest extends TestsTestCase
 
         $this->actingAs($user);
 
-        $response = $this->post('/pms/ski_sk', [
+        $response = $this->post('/pms/ski-sk', [
             'id_ref_ski' => 1,
             'id_kelompok_sk' => 1,
             'sasaran_kerja' => 'finansial',
@@ -35,7 +35,7 @@ class SKISkTest extends TestsTestCase
 
         $response->assertRedirect(route('pms.ski.index'));
 
-        $data = SKISk::where('id_ref_ski', '1')->first();
+        $data = SkiSk::where('id_ref_ski', '1')->first();
 
         $this->assertNotNull($data);
     }
@@ -47,7 +47,7 @@ class SKISkTest extends TestsTestCase
         $this->actingAs($user);
 
 
-        $response = $this->post('/pms/ski_sk', [
+        $response = $this->post('/pms/ski-sk', [
                    'id_ref_ski' => 1,
                    'id_kelompok_sk' => 1,
                    'sasaran_kerja' => 'finansial',
@@ -67,7 +67,7 @@ class SKISkTest extends TestsTestCase
 
 
 
-        $data = $this->post('/pms/ski_sk', [
+        $data = $this->post('/pms/ski-sk', [
                         'id_ref_ski' => '1'
                     ], ['_method' => 'delete' ]);
 
@@ -84,7 +84,7 @@ class SKISkTest extends TestsTestCase
 
 
 
-        $response = $this->post('/pms/ski_sk', [
+        $response = $this->post('/pms/ski-sk', [
                            'id_ref_ski' => 1,
                            'id_kelompok_sk' => 1,
                            'sasaran_kerja' => 'finansial',
@@ -102,7 +102,7 @@ class SKISkTest extends TestsTestCase
 
 
 
-        $data = $this->post('/pms/ski_sk', [
+        $data = $this->post('/pms/ski-sk', [
                            'id_ref_ski' => 1,
                            'id_kelompok_sk' => 1,
                            'sasaran_kerja' => 'pelanggan',
