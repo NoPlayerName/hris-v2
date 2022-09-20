@@ -43,30 +43,9 @@ class SKITugasTest extends TestsTestCase
         $response->assertRedirect(route('pms.ski.index'));
 
 
-        // $data = SkiTugas::where('id_ref_ski', '1')->first();
-
-        // $this->assertNotNull($data);
-
-        // $response = $this->post('/pms/ski', [
-        //           'id_ref_ski' => '1',
-        //           'tugas' => 'membuat sistem',
-        //       ]);
-
-
-
         $data = $this->post('/pms/ski', [
                         'id_ref_ski' => '1'
                     ], ['_method' => 'delete' ]);
-
-
-        // // $data = SkiTugas::get()->first();
-
-        // // if ($data) {
-
-
-        // // }
-        // // $this->assertSoftDeleted($data);
-        // $data->assertRedirect(route('pms.ski.index'));
 
         $this->assertNotNull($data);
     }
@@ -90,10 +69,6 @@ class SKITugasTest extends TestsTestCase
 
         $response->assertRedirect(route('pms.ski.index'));
 
-
-        // $this->post('/pms/ski', [
-        //                   'id_ref_ski_tugas' => '1',
-        //                   'tugas' => 'mengubah sistem'], ['_method' => 'put' ]);
 
         $data = SkiTugas::where('id_ref_ski', '1')->first();
 
