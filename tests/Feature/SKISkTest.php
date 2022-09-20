@@ -13,7 +13,7 @@ class SKISkTest extends TestsTestCase
 {
     use RefreshDatabase;
 
-    public function test_SK()
+    public function test_addSk()
     {
         $user = User::create(['nik' => 'test', 'name' => 'test', 'email' => 'test@example.com']);
 
