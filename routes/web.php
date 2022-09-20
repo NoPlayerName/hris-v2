@@ -3,8 +3,9 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PMS\PAController;
 use App\Http\Controllers\PMS\SKIController;
-use App\Http\Controllers\SKITugasController;
-use App\Http\Controllers\SKISkController;
+use App\Http\Controllers\SkiTugasController;
+use App\Http\Controllers\SkiSkController;
+
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 
@@ -33,5 +34,6 @@ Route::middleware('auth')->prefix('pms')->name('pms.')->group(function () {
     Route::get('/pa', [PAController::class, 'index'])->name('pa.index');
 
     Route::resource('/ski', SkiTugasController::class);
-    Route::resource('/ski_sk', SkiSkController::class);
+    Route::resource('/ski-sk', SkiSkController::class);
+    Route::resource('/ski-cat', SKIController::class);
 });
