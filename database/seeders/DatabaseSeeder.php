@@ -28,12 +28,16 @@ class DatabaseSeeder extends Seeder
         // ]);
         DB::table('skis')->insert([
             'category' => 'data',
+            'kode_jabatan' => '01',
+            'version' => date('Ymd'),
             // 'created_at' => date('Ymd'),
             // 'updated_at' => date('Ymd'),
             // 'deleted_at' => date('Ymd')
         ]);
         DB::table('skis')->insert([
             'category' => 'data2',
+            'kode_jabatan' => '02',
+            'version' => date('Ymd'),
             // 'created_at' => date('Ymd'),
             // 'updated_at' => date('Ymd'),
             // 'deleted_at' => date('Ymd')
