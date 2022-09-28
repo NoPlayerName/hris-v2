@@ -18,6 +18,7 @@ class SKIController extends Controller
   public function create()
   {
         //
+      return view('pms.ski.ski_new');
   }
 
     /**
@@ -80,4 +81,9 @@ class SKIController extends Controller
     {
         //
     }
+
+    // public function ski_new()
+    // {
+    //     return view('pms.ski.ski_new');
+    // }
 }
