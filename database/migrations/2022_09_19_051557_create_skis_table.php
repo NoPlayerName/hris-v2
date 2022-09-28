@@ -15,6 +15,8 @@ return new class () extends Migration {
         Schema::create('skis', function (Blueprint $table) {
             $table->id('id_ref_ski');
             $table->string('category');
+            $table->string('kode_jabatan', 50);
+            $table->datetime('version');
             $table->timestamps();
         });
     }
