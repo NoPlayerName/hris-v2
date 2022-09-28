@@ -26,6 +26,9 @@
     <link href="{{ url('assets/css/app.css') }}" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="{{ url('assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
+  
+
+    
 
 </head>
 
@@ -137,6 +140,9 @@
 
     <!-- App js -->
     <script src="{{ url('assets/js/app.js') }}"></script>
+
+    
+  
 </body>
 
 </html>
