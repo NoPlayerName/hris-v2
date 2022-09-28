@@ -135,9 +135,12 @@
 
     <!--Swiper slider js-->
     <script src="{{ url('assets/libs/swiper/swiper-bundle.min.js') }}"></script>
-
+    {{-- jquery --}}
+    <script src="{{ url('assets/js/jquery.min.js') }}"></script>
     <!-- App js -->
     <script src="{{ url('assets/js/app.js') }}"></script>
+    {{-- custom js --}}
+    <script src="{{ url('assets/js/script.js') }}"></script>
 </body>
 
 </html>
