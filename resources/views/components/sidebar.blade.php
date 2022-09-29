@@ -123,6 +123,11 @@
                                 <a href="rekap-pa.html" class="nav-link" data-key="t-rekap-pa">Rekap
                                     PA</a>
                             </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('pms.referensi-pa.index') }}" class="nav-link"
+                                    data-key="t-referensi-pa">Referensi PA</a>
+                            </li>
                         </ul>
                     </div>
                 </li> <!-- end Dashboard Menu -->

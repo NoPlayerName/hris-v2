@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PMS\PAController;
+use App\Http\Controllers\PMS\ReferensiPAController;
 use App\Http\Controllers\PMS\SKIController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -29,4 +30,6 @@ Route::get('/', function () {
 Route::middleware('auth')->prefix('pms')->name('pms.')->group(function () {
     Route::get('/ski', [SKIController::class, 'index'])->name('ski.index');
     Route::get('/pa', [PAController::class, 'index'])->name('pa.index');
+
+    Route::resource('referensi-pa', ReferensiPAController::class)->only('index', 'store', 'update', 'destroy');
 });
