@@ -37,15 +37,15 @@ class SKITugasController extends Controller
     public function store(StoreSkiTugasRequest $request)
     {
         $tugas = $request['tugas'];
-        $id_ref_ski = $request['id_ref_ski'];
+        $id_ref_ski = 3;
 
         SkiTugas::create([
             'id_ref_ski' => $id_ref_ski,
-            'tugas' => $tugas,
-            'created_at' => date('Ymd')
+            'tugas' => $tugas
+
         ]);
 
-        return redirect(route('pms.ski.index'));
+        return redirect(route('pms.ski.ski_new'))->with('successTugas', 'Tugas dan tanggung jawab berhasil di tambahkan!!');
     }
 
     /**
@@ -90,10 +90,12 @@ class SKITugasController extends Controller
      * @param  \App\Models\SKITugas  $sKITugas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SkiTugas $SKITugas)
+    public function destroy(SkiTugas $SKITugas, $id_ref_ski_tugas)
     {
-        SkiTugas::destroy($SKITugas->id_ref_ski_tugas);
+        SkiTugas::destroy($id_ref_ski_tugas);
 
-        return redirect(route('pms.ski.index'));
+        // dd($id);
+
+        return redirect(route('pms.ski.ski_new'))->with('successTugas', 'Tugas dan tanggung jawab berhasil di hapus');
     }
 }
