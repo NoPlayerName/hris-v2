@@ -12,8 +12,8 @@ class SkiTemplate extends Model
     protected $primaryKey = 'id_ref_ski';
     protected $guarded = ['id_ref_ski'];
 
-    // public function tugas()
-    // {
-    //     return $this->hasMany(SkiTugas::class, 'id_ref_ski');
-    // }
+    public function SkiSk()
+    {
+        return $this->hasMany(SkiSk::class);
+    }
 }
