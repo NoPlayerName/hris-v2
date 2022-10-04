@@ -20,7 +20,7 @@ return new class () extends Migration {
             $table->float('bobot');
             $table->text('kriteria_pengukuran');
             $table->text('target');
-            $table->datetime('batas_waktu');
+            $table->date('batas_waktu');
             $table->text('rencana_tindakan');
             $table->integer('sequence');
             $table->timestamps();
