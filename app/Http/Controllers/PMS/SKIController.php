@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\PMS;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreSkiRequest;
-use App\Http\Requests\UpdateSkiRequest;
-use App\Models\Ski;
+use App\Http\Requests\StoreSkiTemplateRequest;
+use App\Http\Requests\UpdateSkiTemplateRequest;
+use App\Models\SkiSk;
+use App\Models\SkiTemplate;
+use App\Models\SkiTugas;
 use GuzzleHttp\Psr7\Request;
 
 class SKIController extends Controller
@@ -15,20 +17,20 @@ class SKIController extends Controller
         return view('pms.ski.index');
     }
 
-  public function create()
-  {
+    public function create()
+    {
         //
-  }
+    }
 
     /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \App\Http\Requests\StoreSkiRequest  $request
-   * @return \Illuminate\Http\Response
-   */
-    public function store(StoreSkiRequest $request)
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\StoreSkiTemplateRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoreSkiTemplateRequest $request)
     {
-        Ski::create([
+        SkiTemplate::create([
             'category' => $request['category']
         ]);
         return redirect(route('pms.ski.index'));
@@ -40,7 +42,7 @@ class SKIController extends Controller
      * @param  \App\Models\Ski  $ski
      * @return \Illuminate\Http\Response
      */
-    public function show(Ski $ski)
+    public function show(SkiTemplate $ski)
     {
         //
     }
@@ -48,10 +50,10 @@ class SKIController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Ski  $ski
+     * @param  \App\Models\SkiTemplate  $ski
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ski $ski)
+    public function edit(SkiTemplate $ski)
     {
         //
     }
@@ -59,30 +61,33 @@ class SKIController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSkiRequest  $request
-     * @param  \App\Models\Ski  $ski
+     * @param  \App\Http\Requests\UpdateSkiTemplateRequest  $request
+     * @param  \App\Models\SkiTemplate  $ski
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSkiRequest $request, Ski $ski)
+    public function update(UpdateSkiTemplateRequest $request, SkiTemplate $ski)
     {
-        Ski::where('id_ref_ski', $ski->id_ref_ski)
-        ->update(['category' => $request['category']]);
+        SkiTemplate::where('id_ref_ski', $ski->id_ref_ski)
+         ->update(['category' => $request['category']]);
         return redirect(route('pms.ski.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Ski  $ski
+     * @param  \App\Models\SkiTemplate  $ski
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ski $ski)
+    public function destroy(SkiTemplate $ski)
     {
         //
     }
 
     public function ski_new()
     {
-        return view('pms.ski.ski_new');
+        return view('pms.ski.ski_new', [
+            'tugas' => SkiTugas::all(),
+            'SasaranKerjaIndividu' => SkiSk::all()
+        ]);
     }
 }
