@@ -11,7 +11,7 @@
                             <div class="card-header align-items-center d-flex">
                                 <h4 class="card-title mb-0 flex-grow-1">SKI Pribadi</h4>
                                 <div class="flex-shrink-0">
-                                    <a href="ski/ski_new" type="button" class="btn btn-soft-info"><i
+                                    <a href="ski/ski-new" type="button" class="btn btn-soft-info"><i
                                             class="ri-add-circle-line align-middle me-1"></i> New SKI</a>
                                 </div>
                             </div><!-- end card header -->
