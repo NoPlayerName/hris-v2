@@ -32,8 +32,8 @@ Route::get('/', function () {
 Route::middleware('auth')->prefix('pms')->name('pms.')->group(function () {
     Route::get('/ski', [SKIController::class, 'index'])->name('ski.index');
     Route::get('/pa', [PAController::class, 'index'])->name('pa.index');
-    Route::get('/ski/ski_new', [SKIController::class, 'ski_new'])->name('ski.ski_new');
-    // Route::resource('/ski/post', SKIController::class);
-    Route::resource('/ski/tugas', SkiTugasController::class);
-    Route::resource('/ski/sk', SkiSkController::class);
+    Route::get('/ski/ski-new', [SKIController::class, 'ski_new'])->name('ski.ski_new');
+    // Route::resource('/ski/create', SKIController::class);
+    Route::resource('/ski/ski-new/tugas/post', SkiTugasController::class);
+    // Route::resource('/ski/sk', SkiSkController::class);
 });
