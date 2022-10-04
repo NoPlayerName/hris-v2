@@ -11,4 +11,14 @@ class SkiSk extends Model
 
     protected $primaryKey = 'id_ref_ski_sk';
     protected $guarded = ['id_ref_ski_sk'];
+
+    public function SkiTemplate()
+    {
+        return $this->belongsTo(SkiTemplate::class, 'id_ref_ski');
+    }
+
+    public function kelompok()
+    {
+        return $this->belongsTo(KelompokSk::class, 'id_kelompok_sk');
+    }
 }
