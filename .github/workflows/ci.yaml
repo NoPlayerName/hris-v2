@@ -82,6 +82,12 @@ jobs:
       run: |
         cp .ci.env .env
         php artisan key:generate
+      env:
+        DB_HRIS_HOST: ${{ secrets.DB_HRIS_HOST }}
+        DB_HRIS_PORT: ${{ secrets.DB_HRIS_PORT }}
+        DB_HRIS_DATABASE: ${{ secrets.DB_HRIS_DATABASE }}
+        DB_HRIS_USERNAME: ${{ secrets.DB_HRIS_USERNAME }}
+        DB_HRIS_PASSWORD: ${{ secrets.DB_HRIS_PASSWORD }}
 
     - name: Install front-end dependencies
       run: |
@@ -90,3 +96,9 @@ jobs:
 
     - name: Run Testsuite
       run: vendor/bin/phpunit tests/
+      env:
+        DB_HRIS_HOST: ${{ secrets.DB_HRIS_HOST }}
+        DB_HRIS_PORT: ${{ secrets.DB_HRIS_PORT }}
+        DB_HRIS_DATABASE: ${{ secrets.DB_HRIS_DATABASE }}
+        DB_HRIS_USERNAME: ${{ secrets.DB_HRIS_USERNAME }}
+        DB_HRIS_PASSWORD: ${{ secrets.DB_HRIS_PASSWORD }}
