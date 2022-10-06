@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\SkiTugas;
 use App\Http\Requests\StoreSkiTugasRequest;
 use App\Http\Requests\UpdateSkiTugasRequest;
+use Carbon\Carbon;
 
 class SKITugasController extends Controller
 {
@@ -38,10 +39,11 @@ class SKITugasController extends Controller
     {
         $tugas = $request['tugas'];
         $id_ref_ski = 3;
-
+        $localtime = Carbon::now('Asia/Jakarta');
         SkiTugas::create([
             'id_ref_ski' => $id_ref_ski,
-            'tugas' => $tugas
+            'tugas' => $tugas,
+            'created_at' => $localtime
 
         ]);
 
