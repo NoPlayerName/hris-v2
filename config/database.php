@@ -148,4 +148,14 @@ return [
 
     ],
 
+    // HRIS DB Connection
+
+    'hris' => [
+        'host' => env('DB_HRIS_HOST', '127.0.0.1'),
+        'port' => env('DB_HRIS_PORT', '5432'),
+        'database' => env('DB_HRIS_DATABASE', 'forge'),
+        'username' => env('DB_HRIS_USERNAME', 'forge'),
+        'password' => env('DB_HRIS_PASSWORD', ''),
+    ],
+
 ];

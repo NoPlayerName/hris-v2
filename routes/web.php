@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PMS\PAController;
+use App\Http\Controllers\PMS\ReferensiPAController;
 use App\Http\Controllers\PMS\SKIController;
 use App\Http\Controllers\SkiTugasController;
 use App\Http\Controllers\SkiSkController;
@@ -38,4 +39,6 @@ Route::middleware('auth')->prefix('pms')->name('pms.')->group(function () {
     // Route::resource('/ski/create', SKIController::class);
     Route::resource('/ski/ski-new/tugas/post', SkiTugasController::class);
     Route::resource('/ski/ski-new/sk-individu/post', SkiSkController::class);
+
+    Route::resource('referensi-pa', ReferensiPAController::class)->only('index', 'store', 'update', 'destroy');
 });

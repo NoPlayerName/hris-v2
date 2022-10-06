@@ -13,13 +13,15 @@ return new class() extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('nik')->unique();
-            $table->string('name');
-            $table->string('email')->unique();
+        Schema::create('ref_pa_pertimbangan', function (Blueprint $table) {
+            $table->id('id_ref_pa_pertimbangan');
+            $table->unsignedBigInteger('id_ref_pa');
+            $table->unsignedInteger('seq');
+            $table->text('pertimbangan');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('id_ref_pa')->references('id_ref_pa')->on('ref_pa');
         });
     }
 
@@ -30,6 +32,6 @@ return new class() extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('ref_pa_pertimbangan');
     }
 };

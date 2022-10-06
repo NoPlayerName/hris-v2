@@ -1,2 +1,12 @@
+.level-btn {
+    padding: 10px;
+}
 
-/*# sourceMappingURL=custom.min.css.map */
+.level-btn.active,
+.level-btn:active,
+.level-btn:focus,
+.level-btn:hover {
+    color: #405189;
+    background-color: rgba(64, 81, 137, .1);
+    border-radius: 5px;
+}

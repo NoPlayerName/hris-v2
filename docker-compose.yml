@@ -27,7 +27,7 @@ services:
             - redis
             - minio
     pgsql:
-        image: 'postgres:14'
+        image: 'trans7/postgres-14-alpine-tds:latest'
         ports:
             - '${FORWARD_DB_PORT:-5432}:5432'
         environment:
