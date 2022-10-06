@@ -11,8 +11,9 @@
                             <div class="card-header align-items-center d-flex">
                                 <h4 class="card-title mb-0 flex-grow-1">SKI Pribadi</h4>
                                 <div class="flex-shrink-0">
-                                    <a href="ski/ski-new" type="button" class="btn btn-soft-info"><i
-                                            class="ri-add-circle-line align-middle me-1"></i> New SKI</a>
+                                    <a href="#" type="button" class="btn btn-soft-info" data-bs-toggle="modal"
+                                        data-bs-target="#Modal"><i class="ri-add-circle-line align-middle me-1"></i> New
+                                        SKI</a>
                                 </div>
                             </div><!-- end card header -->
 
@@ -275,4 +276,70 @@
     </div>
 
     <!--end row-->
+    <!-- Modal -->
+    <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="ski/post" method="POST">
+                        @csrf
+                        <div class="col-lg">
+                            <div class=" mb-3 form1">
+                                <label for="basic-url" class="form-label label1">Pilih Jabatan</label>
+                                <select class="form-select input1" id="inputGroupSelect01" name="jabatan">
+                                    <option selected>Choose...</option>
+                                    <option value="1">Staff</option>
+                                    <option value="2">Supervisior</option>
+                                    <option value="3">Section Head</option>
+                                </select>
+                            </div>
+
+                            {{-- <div class="mb-3 form2">
+                                <label for="basic-url" class="form-label label2">Your vanity URL</label>
+                                <textarea class="form-control input2" name="" id="basic-url" aria-describedby="basic-addon3"></textarea>
+                            </div>
+
+                            <div class=" mb-3 form3">
+                                <label for="basic-url" class="form-label label3">Your vanity URL</label>
+                                <input type="text" class="form-control input3" name="" id="basic-url"
+                                    aria-describedby="basic-addon3">
+                            </div>
+
+                            <div class=" mb-3 form4">
+                                <label for="basic-url" class="form-label label4">Your vanity URL</label>
+                                <input type="text" class="form-control input4" name="" id="basic-url"
+                                    aria-describedby="basic-addon3">
+                            </div>
+
+                            <div class=" mb-3 form5">
+                                <label for="basic-url" class="form-label label5">Your vanity URL</label>
+                                <input type="text" class="form-control input5" name="" id="basic-url"
+                                    aria-describedby="basic-addon3">
+                            </div>
+
+                            <div class=" mb-3 form6">
+                                <label for="basic-url" class="form-label label6">Your vanity URL</label>
+                                <input type="date" class="form-control input6" name="" id="basic-url"
+                                    aria-describedby="basic-addon3">
+                            </div>
+
+                            <div class=" mb-3 form7">
+                                <label for="basic-url" class="form-label label7">Your vanity URL</label>
+                                <textarea class="form-control input7" name="" id="basic-url" aria-describedby="basic-addon3"></textarea>
+                            </div> --}}
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </x-layout>
