@@ -10,6 +10,7 @@ use GuzzleHttp\Psr7\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSkiTemplateRequest;
 use App\Http\Requests\UpdateSkiTemplateRequest;
+use App\Models\HRIS\ViewPosisi;
 use Carbon\Carbon;
 
 class SKIController extends Controller
@@ -17,7 +18,7 @@ class SKIController extends Controller
     public function index()
     {
         return view('pms.ski.index', [
-            'jabatan' => SkiTemplate::all()
+            'ViewPosisi' => ViewPosisi::all()
         ]);
     }
 
