@@ -41,18 +41,18 @@ class SkiSkController extends Controller
 
         SkiSk::create([
 
-            'id_ref_ski' => $request['id_ref_ski'],
-            'id_kelompok_sk' => $request['id_kelompok_sk'],
+            'id_ref_ski' => 1,
+            'id_kelompok_sk' => $request['grup'],
             'sasaran_kerja' => $request['sasaran_kerja'],
             'bobot' => $request['bobot'],
-            'kriteria_pengukuran' => $request['kriteria_pengukuran'],
+            'kriteria_pengukuran' => $request['kriteria'],
             'target' => $request['target'],
             'batas_waktu' => $request['batas_waktu'],
             'rencana_tindakan' => $request['rencana_tindakan'],
-            'sequence' => $request['sequence'],
+            'sequence' => 1,
         ]);
 
-        return redirect(route('pms.ski.index'));
+        return redirect(route('pms.ski.ski_new'))->with('successSki', 'Sasaran Kerja Individu berhasil di tambahkan!!');
     }
 
     /**
@@ -106,10 +106,10 @@ class SkiSkController extends Controller
      * @param  \App\Models\SkiSk  $skiSk
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SkiSk $skiSk)
+    public function destroy(SkiSk $skiSk, $id_ref_ski_sk)
     {
-        SkiSk::destroy($skiSk->id_ref_skis);
+        SkiSk::destroy($id_ref_ski_sk);
 
-        return redirect(route('pms.ski.index'));
+        return redirect(route('pms.ski.ski_new'));
     }
 }
