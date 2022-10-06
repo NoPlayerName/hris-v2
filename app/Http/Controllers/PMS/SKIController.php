@@ -2,19 +2,23 @@
 
 namespace App\Http\Controllers\PMS;
 
+use App\Models\SkiSk;
+use App\Models\SkiTugas;
+use App\Models\KelompokSK;
+use App\Models\SkiTemplate;
+use GuzzleHttp\Psr7\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSkiTemplateRequest;
 use App\Http\Requests\UpdateSkiTemplateRequest;
-use App\Models\SkiSk;
-use App\Models\SkiTemplate;
-use App\Models\SkiTugas;
-use GuzzleHttp\Psr7\Request;
+use Carbon\Carbon;
 
 class SKIController extends Controller
 {
     public function index()
     {
-        return view('pms.ski.index');
+        return view('pms.ski.index', [
+            'jabatan' => SkiTemplate::all()
+        ]);
     }
 
     public function create()
@@ -30,10 +34,41 @@ class SKIController extends Controller
      */
     public function store(StoreSkiTemplateRequest $request)
     {
-        SkiTemplate::create([
-            'category' => $request['category']
-        ]);
-        return redirect(route('pms.ski.index'));
+        if ($request['jabatan'] == 1) {
+            $data = [
+                'id_ref_ski' => $request['jabatan'],
+                'category' => 'Staff',
+                'kode_jabatan' => '01',
+                'version' =>Carbon::now('Asia/Jakarta'),
+                'created_at' => Carbon::now('Asia/Jakarta')
+
+            ];
+        }
+        if ($request['jabatan'] == 2) {
+            $data = [
+                'id_ref_ski' => $request['jabatan'],
+                'category' => 'Supervisior',
+                'kode_jabatan' => '02',
+                'version' => Carbon::now('Asia/Jakarta'),
+                'created_at' => Carbon::now('Asia/Jakarta')
+
+            ];
+        }
+        if ($request['jabatan'] == 3) {
+            $data = [
+                'id_ref_ski' => $request['jabatan'],
+                'category' => 'Section Head',
+                'kode_jabatan' => '03',
+                'version' => Carbon::now('Asia/Jakarta'),
+                'created_at' => Carbon::now('Asia/Jakarta')
+
+            ];
+        }
+
+        SkiTemplate::create($data);
+        // $id =  SkiTemplate::all()->latest();
+        // dd($id->id_ref_ski);
+        return redirect('pms/ski/ski_new/' . $request['jabatan']);
     }
 
     /**
@@ -87,7 +122,8 @@ class SKIController extends Controller
     {
         return view('pms.ski.ski_new', [
             'tugas' => SkiTugas::all(),
-            'SasaranKerjaIndividu' => SkiSk::all()
+            'SasaranKerjaIndividu' => SkiSk::all(),
+            'kelompok' => KelompokSK::all()
         ]);
     }
 }
