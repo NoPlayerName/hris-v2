@@ -290,12 +290,15 @@
                         @csrf
                         <div class="col-lg">
                             <div class=" mb-3 form1">
-                                <label for="basic-url" class="form-label label1">Pilih Jabatan</label>
+                                <label for="basic-url" class="form-label label1">Pilih Posisi</label>
                                 <select class="form-select input1" id="inputGroupSelect01" name="jabatan">
                                     <option selected>Choose...</option>
-                                    <option value="1">Staff</option>
-                                    <option value="2">Supervisior</option>
-                                    <option value="3">Section Head</option>
+                                    @foreach ($ViewPosisi as $VP)
+                                        <option value="{{ $VP->posisi_kodejabatan }}">
+                                            {{ $VP->posisi_jabatan . ' (' . $VP->department_name . ')' }}</option>
+                                    @endforeach
+
+
                                 </select>
                             </div>
 
