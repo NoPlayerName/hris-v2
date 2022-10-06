@@ -51,13 +51,13 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-pills animation-nav profile-nav gap-2 gap-lg-3 flex-grow-1" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link fs-14 active" data-bs-toggle="tab" href="#tugas" role="tab">
+                            <a class="nav-link fs-14 tugas" href="#tugas" onclick="tugas()" role="tab">
                                 <i class="ri-airplay-fill d-inline-block d-md-none"></i> <span
                                     class="d-none d-md-inline-block">Tugas & Tanggung Jawab Utama</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fs-14" data-bs-toggle="tab" href="#ski" role="tab">
+                            <a class="nav-link fs-14 ski" href="#ski" onclick="ski()" role="tab">
                                 <i class="ri-list-unordered d-inline-block d-md-none"></i> <span
                                     class="d-none d-md-inline-block">Sasaran Kerja Individu</span>
                             </a>
@@ -238,14 +238,21 @@
                                                         <td>{{ $SkiSki->kriteria_pengukuran }}</td>
                                                         <td>{{ $SkiSki->target }}
                                                         </td>
-                                                        <td>{{ $SkiSki->batas_waktu }}</td>
+                                                        <td>{{ date('d-m-Y', strtotime($SkiSki->batas_waktu)) }}</td>
                                                         <td>{{ $SkiSki->rencana_tindakan }}</td>
                                                         <td>
                                                             <div class="hstack gap-3 fs-15">
                                                                 <a href="javascript:void(0);" class="link-primary"><i
                                                                         class="ri-settings-4-line"></i></a>
-                                                                <a href="javascript:void(0);" class="link-danger"><i
-                                                                        class="ri-delete-bin-5-line"></i></a>
+                                                                <form
+                                                                    action="ski-new/sk-individu/post/{{ $SkiSki->id_ref_ski_sk }}"
+                                                                    method="POST" class="d-inline">
+                                                                    @method('delete')
+                                                                    @csrf
+                                                                    <button class="btn link-danger"
+                                                                        onclick="return confirm('Yakin ingin menghapus?')"><i
+                                                                            class="ri-delete-bin-5-line"></i></button>
+                                                                </form>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -304,9 +311,9 @@
                                 <label for="basic-url" class="form-label label1">Your vanity URL</label>
                                 <select class="form-select input1" id="inputGroupSelect01" name="">
                                     <option selected>Choose...</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    @foreach ($kelompok as $kp)
+                                        <option value="{{ $kp->id_kelompok_sk }}">{{ $kp->kelompok }}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
