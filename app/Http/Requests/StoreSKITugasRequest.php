@@ -24,7 +24,7 @@ class StoreSkiTugasRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'tugas' => 'required|max:30'
         ];
     }
 }
