@@ -5,6 +5,7 @@ $(function () {
         $(".formModal").attr("action", "ski-new/tugas/post");
         $(".label2").html("Tugas");
         $(".input2").attr("name", "tugas");
+        $(".input2").attr("required");
         $(".form1").hide();
         $(".form3").hide();
         $(".form4").hide();
@@ -17,7 +18,7 @@ $(function () {
     //addski
     $(".addski").on("click", function () {
         $("#ModalLabel").html("Add Sasaran Kerja Individu");
-        $(".formModal").attr("action", "ski-sk/post");
+        $(".formModal").attr("action", "ski-new/sk-individu/post");
         $(".form1").show();
         $(".form3").show();
         $(".form4").show();
@@ -41,3 +42,11 @@ $(function () {
         $(".input7").attr("name", "rencana_tindakan");
     });
 });
+function tugas() {
+    $(".tugas").addClass("active");
+    $(".ski").removeClass("active");
+}
+function ski() {
+    $(".ski").addClass("active");
+    $(".tugas").removeClass("active");
+}
