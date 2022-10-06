@@ -27,10 +27,7 @@ services:
             - redis
             - minio
     pgsql:
-        build:
-            context: ./.docker
-            dockerfile: Dockerfile-postgres
-        image: 'postgres:14-alpine'
+        image: 'trans7/postgres-14-alpine-tds:latest'
         ports:
             - '${FORWARD_DB_PORT:-5432}:5432'
         environment:
